@@ -99,6 +99,10 @@ namespace CSCore.Codecs.FLAC
         ///     Callback which gets called when the pre scan processes finished. Should be used if the
         ///     <paramref name="scanFlag" /> argument is set the <see cref="FlacPreScanMode.Async" />.
         /// </param>
+        /// <exception cref="ArgumentNullException">The <paramref name="stream"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">The <paramref name="stream"/> is not readable.</exception>
+        /// <exception cref="EndOfStreamException">The "fLaC" sync can not be read.</exception>
+        /// <exception cref="FlacException">"fLaC" signature or metadata not found or invalid.</exception>
         public FlacFile(Stream stream, FlacPreScanMode scanFlag,
             Action<FlacPreScanFinishedEventArgs> onscanFinished)
         {

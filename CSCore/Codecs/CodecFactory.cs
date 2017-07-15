@@ -22,7 +22,7 @@ namespace CSCore.Codecs
     /// </summary>
     public class CodecFactory
     {
-// ReSharper disable once InconsistentNaming
+        // ReSharper disable once InconsistentNaming
         private static readonly CodecFactory _instance = new CodecFactory();
 
         private readonly Dictionary<object, CodecFactoryEntry> _codecs;
@@ -135,10 +135,12 @@ namespace CSCore.Codecs
         /// </summary>
         /// <param name="filename">Filename of the specified file.</param>
         /// <returns>Fully initialized <see cref="IWaveSource" /> instance which is able to decode the specified file.</returns>
+        /// <exception cref="ArgumentNullException">The <paramref name="filename"/> argument is <see langword="null"/>.</exception>
+        /// <exception cref="FileNotFoundException">The file specified by <paramref name="filename"/> couldn't be found.</exception>
         /// <exception cref="NotSupportedException">The codec of the specified file is not supported.</exception>
         public IWaveSource GetCodec(string filename)
         {
-            if(String.IsNullOrEmpty(filename))
+            if (String.IsNullOrEmpty(filename))
                 throw new ArgumentNullException("filename");
 
             if (!File.Exists(filename))

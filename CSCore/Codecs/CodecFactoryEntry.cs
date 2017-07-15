@@ -27,6 +27,8 @@ namespace CSCore.Codecs
         /// </summary>
         /// <param name="getCodecAction">Delegate which initializes a codec decoder based on a <see cref="Stream"/>.</param>
         /// <param name="fileExtensions">All which the codec associated file extensions.</param>
+        /// <exception cref="ArgumentNullException">The <paramref name="getCodecAction"/> argument is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException"><paramref name="fileExtensions"/> argument is <see langword="null"/> or empty.</exception>
         public CodecFactoryEntry(GetCodecAction getCodecAction, params string[] fileExtensions)
         {
             if (getCodecAction == null)
